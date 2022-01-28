@@ -17,7 +17,7 @@ distance = [INF] * (n+1)
 # 모든 간선 정보를 입력받기
 for _ in range(m):
     a,b,c = map(int, input().split())
-    graph[a].append(b,c)
+    graph[a].append((b,c))
 
 def dijkstra(start):
     q = []
@@ -28,7 +28,7 @@ def dijkstra(start):
     # Queue가 빌때까지 반복(중요)
     while q:
         #가장 짧은 노드에 대한 정보 꺼내기
-        dist, now = heapq.heappop()
+        dist, now = heapq.heappop(q)
         # 현재 노드가 이미 처리된 노드라면 무시
         if distance[now] < dist: #INF라면 거짓이 됨
             continue
