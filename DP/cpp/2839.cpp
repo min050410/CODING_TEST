@@ -1,4 +1,4 @@
-// 설탕 배달 - 백준 2889 브1
+// 설탕 배달 - 백준 2889 
 
 #include <iostream>
 using namespace std;
