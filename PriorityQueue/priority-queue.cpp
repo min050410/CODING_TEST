@@ -28,10 +28,97 @@ void Heap<T>::push(const T& data)
 {
     try {
         if (size()== maxSize) throw HeapFull();
-
         heapData[n] = data;
+
+        // 배열을 이용해서 parent 접근
+        int parent = (n-1)/2;
+        int child = n;
+
+        while(parent>=0 && heapData[parent]) < heapData[child])
+        {
+            T tmp = heapData[parent];
+            heapData[parent] = heapData[child];
+            heapData[child] = tmp;
+            // child index를 먼저 parent index로 바꾸기
+            child = parent;
+            // 그다음에 parent index를 child index로 바꾸기
+            parent = (child-1) / 2;
+        }
+        ++n;
     }
-
-
+    // throw catch문 활용
+    catch (HeapFull e){
+        std::cout << "Heap is full\n";
+        // 프로세스 종료
+        exit(2);
+    }
 }
 
+template<typename T>
+void Heap<T>::pop()
+{
+    try{
+        if (empty()) throw HeapEmpty();
+        heapData[0] = heapData[--n];
+
+        int parent = 0;
+        int child = parent * 2 + 1;
+        bool placed = false;
+
+        while (!placed && child < n){
+            if (child < n - 1 & heapData[child] < heapData[child + 1]){
+                child += 1;
+            }
+            if(heapData[parent] >= heapData[child])
+                placed = true;
+            else
+            {
+                // child 와 parent 값 변경 tmp 활용
+                T tmp = heapData[parent];
+                heapData[parent] = heapData[child];
+                heapData[child] = tmp;
+            }
+            parent = child;
+            child = parent * 2 + 1;
+        }
+    }
+    catch(HeapEmpty e) {
+        std::cout << "Heap is Empty!\n";
+        exit(2);
+    }
+}
+
+template<typename T>
+T& Heap<T>::top() const
+{
+    try {
+        if(empty()) throw HeapEmpty();
+        return heapData[0];
+    }    
+    catch ( HeapEmpty e ) {
+        std::cout << "Heap is empty\n";
+        exit(2);
+    }
+}
+
+template<typename T>
+int Heap<T>::size() const
+{
+    return n;
+}
+
+template<typename T>
+bool Heap<T>::empty() const 
+{
+    return (n==0);
+}
+
+template<typename T>
+void Heap<T>::print() const
+{
+    std::cout << "[ ";
+    for( int i=0; i< n; i++)
+        std::cout << heapData[i] << " ";
+    std::cout << "]\n";
+}
+#endif
