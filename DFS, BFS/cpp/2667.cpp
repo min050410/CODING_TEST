@@ -6,7 +6,8 @@
 
 using namespace std;
 
-int n, m;
+int n, m, k;
+int x, y;
 int dx[4] = {0, 1, 0, -1};
 int dy[4] = {-1, 0, 1, 0};
 
@@ -22,8 +23,6 @@ vector<int> result;
 void dfs(int l, int r){
   // 방문 설정
   vi[l][r] = 1;
-
-  cnt++;
   // 4방향으로 확인
   for(int i=0; i < 4; i++){
     int ny = dy[i] + l;
@@ -39,32 +38,30 @@ void dfs(int l, int r){
 
 int main()
 {
-  cin >> n;
+  cin >> n >> m;
   for(int i=0; i<n; i++){
-    for(int j=0; j<n; j++){
-      // 띄워쓰기 없는 숫자 하나씩 입력받기
-      scanf("%1d", &m);
-      v[i].push_back(m);
+    for(int j=0; j<m; j++){
+      v[i].push_back(0);
     }
   }
-	
+  cin >> k;
+	for(int i=0; i<k; i++){
+    cin >> x >> y; 
+    // xy 위치 바뀔 수도
+    v[x][y] = 1;
+  }
   for(int i=0; i<n; i++){
-    for(int j=0; j<n; j++){
+    for(int j=0; j<m; j++){
       if(v[i][j]==1 && !vi[i][j]){
-        cnt = 0;
         dfs(i, j);
-        result.push_back(cnt);
+        cnt ++;
       }
     }
   }
   
-  // 결과 정렬
-  sort(result.begin(), result.end());
 
   // 출력
-	cout << result.size() << '\n';
+	cout << cnt << '\n';
 	
-  for(auto const &r:result)
-    cout << r << '\n';
   return 0;
 }
