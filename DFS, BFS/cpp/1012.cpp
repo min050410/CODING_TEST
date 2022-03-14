@@ -62,7 +62,7 @@ int main()
 	    }
 	  }
 		
-	  // result
+	  	// result
 		result.push_back(cnt);
 
 		// 초기화
