@@ -27,7 +27,7 @@ void topologi(){
 			temp = q.front();
 			result.push_back(temp);
 			q.pop();
-			for(int i=1; i<=v[temp].size(); i++){
+			for(int i=0; i<v[temp].size(); i++){
 				// 진입차수 제거
 				inDegree[v[temp][i]]--;
 				if(inDegree[v[temp][i]]==0){
@@ -42,15 +42,15 @@ int main(){
 	cin >> n >> m;
 	for(int i=0; i<m; i++){
 		cin >> a >> b;
-		v[a].push_back(b);
-		inDegree[a]++;
+		v[a].push_back(b);	
+		inDegree[b]++;
 	}
-	for(int l=0; l<=n; l++){
-		cout << inDegree[l] << " ";
-	}
-	cout << '\n';
+	// for(int l=0; l<=n; l++){
+	// 	cout << inDegree[l] << " ";
+	// }
+	// cout << '\n';
 	topologi();
-	// 출력 순서 역순
+
 	for(const auto &r: result){
 		cout << r << " ";
 	}
