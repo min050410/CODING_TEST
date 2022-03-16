@@ -16,18 +16,18 @@ int main(){
 	cin >> n >> m;
 
 	// inf로 초기화
-	for(int i=0; i<n; i++){
-		for(int j=0; j<n; j++){
+	for (int i=0; i<n; i++){
+		for (int j=0; j<n; j++){
 			v[i][j] = inf;
 			// 자기 자신은 0으로
-			if(i==j){
+			if (i==j){
 				v[i][j] = 0;
 			}
 		}
 	}
 	
 	// 입력
-	for(int i=0; i<m; i++){
+	for (int i=0; i<m; i++){
 		cin >> a >> b >> cost; 	
 		v[a][b] = cost;
 		v[b][a] = cost;
@@ -42,9 +42,9 @@ int main(){
 	// }
 	
 	// 출력
-	for(int i=0; i<n; i++){
-			for(int j=0; j<n; j++){
-				if(v[a][b]==99999){
+	for (int i=0; i<n; i++){
+			for (int j=0; j<n; j++){
+				if (v[a][b]==99999){
 					cout << 0 << " ";
 				}
 				else{
