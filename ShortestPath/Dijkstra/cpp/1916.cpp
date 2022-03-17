@@ -1,4 +1,4 @@
-// 최단경로 
+// 최소비용 구하기
 
 #include<iostream>
 #include<vector>
@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int n, m, start, cost;
+int n, m, s, cost, e;
 int a, b, c, dist, temp;
 int dis[20001];
 int inf = INT_MAX;
@@ -34,7 +34,6 @@ void dijkstra(int start){
 			cost = ver.first + dis[temp.second];
 			if (cost < dis[ver.second]){
 				dis[ver.second] = cost;
-				// 여기서 실수함 ( ㅠㅠ 하루종일 헤맸다 )
 				pq.push(make_pair(cost, ver.second));		
 			}
 		}
@@ -48,26 +47,28 @@ int main(){
   ios_base::sync_with_stdio(0);
 	
 	cin >> n >> m;
-	cin >> start;
 	
 	for (int i=1; i<=m; i++){
 		cin >> a >> b >> c;
 		v[a].push_back(make_pair(c, b));
 	}
 
+	cin >> s >> e;
+	
 	// 모든 값을 무한으로 초기화
 	for (int i=1; i<=n; i++){
 		dis[i] = inf;
 	}
-	dijkstra(start);
+	dijkstra(s);
 
 	for (int i=1; i<=n; i++){
-		if (dis[i] == inf)
-		{
-			cout << "INF" << '\n';
-		}
-		else{
-			cout << dis[i] << '\n';
+		if (i==e){
+			if (dis[i] == inf){
+				cout << "INF" << '\n';
+			}
+			else{
+				cout << dis[i] << '\n';
+			}
 		}
 	}
 }
