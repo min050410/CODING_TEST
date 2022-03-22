@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.ejs": "html",
+        "*.mdx": "markdown",
+        "iostream": "cpp"
+    }
+}
