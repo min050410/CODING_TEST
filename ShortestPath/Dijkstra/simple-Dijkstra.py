@@ -11,7 +11,6 @@ graph = [[] for _ in range(n+1)]
 visited = [False] * (n+1)
 # 시작에서 특정 노드까지의 거리
 distance = [INF] * (n+1)
-
 # 간선 정보 입력받기
 # _ 은 단순히 input 만 받기 때문에 사용
 for _ in range(m):
