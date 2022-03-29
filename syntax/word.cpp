@@ -160,7 +160,7 @@ void sortWord() {
     List * temp = today_vocabulary->next;
 
     while(temp != nullptr) {
-        v.push_back(make_pair(temp->word, temp->mean));
+        v.emplace_back(temp->word, temp->mean);
         temp = temp->next;
     }
 
@@ -227,7 +227,7 @@ void randomTest(){
     List * temp = today_vocabulary->next;
     while(temp != nullptr){
         // vector에 삽입
-        v.push_back(make_pair(temp->word, temp->mean));
+        v.emplace_back(temp->word, temp->mean);
         temp = temp -> next;
     }
 
@@ -253,6 +253,11 @@ void randomTest(){
     if(score == v.size()){
         cout << "wow 만점이네요!" << endl;
     }
+
+    // bool array 초기화
+    for (int i=0; i<v.size(); i++){
+        isChecked[i] = false;
+    }
 }
 
 // 반환형으로 참조자 사용, 매개변수 참조자 사용
@@ -260,7 +265,7 @@ int & importRandomWord(int size, int &ref){
     srand(time(NULL));
     int i = rand() % size;
     // bool array 사용
-    while(isChecked[i]!=false){
+    while(isChecked[i]){
         i = rand() % size;
     }
     isChecked[i] = true;
