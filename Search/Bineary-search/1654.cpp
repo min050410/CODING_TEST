@@ -27,7 +27,6 @@ int isCorrect(int x){
 }
 
 int BinarySearch(ll low, ll high, int x){
-
     if (low == high){
         return low;
     }
