@@ -17,7 +17,6 @@ stack<int> s;
 
 // dfs
 int dfs(int x){
-
 	d[x] = ++id;
 	s.push(x);
 

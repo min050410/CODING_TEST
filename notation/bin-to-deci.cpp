@@ -63,7 +63,7 @@ int main() {
 
 	cin >> arr;
 	n1 = ten();
-	memset(arr, 0 , sizeof(arr) );
+	memset(arr, 0 , sizeof(arr));
 	num=0;
 	cin >> arr;
 	n2 = ten();

@@ -29,7 +29,6 @@ int main() {
   m[1] = m2[0] = 0;
 
   for(int i=2; i<=big; i++){
-   
     m[i] = m[i-1] + m[i-2];
     m2[i] = m2[i-1] + m2[i-2];
       
