@@ -8,7 +8,7 @@ using namespace std;
 int a[8];
 
 int ccw(int x1, int y1, int x2, int y2, int x3, int y3) {
-    int op =  (x1*y2 + x2*y3 + x3*y1) - (x2*y1 + x3*y2 + x1*y3);
+    int op = (x1*y2 + x2*y3 + x3*y1) - (x2*y1 + x3*y2 + x1*y3);
     if (op > 0) return 1;
     else if (op == 0) return 0;
     else return -1;
