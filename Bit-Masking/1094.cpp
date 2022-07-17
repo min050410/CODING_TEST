@@ -1,3 +1,5 @@
+// 막대기
+
 #include <iostream>
 
 using namespace std;
