@@ -1,4 +1,4 @@
-// 막대기
+// 막대
 
 #include <iostream>
 
