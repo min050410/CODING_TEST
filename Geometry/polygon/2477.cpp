@@ -1,48 +1,38 @@
 // 참외밭
 
-#include <iostream>
-#include <stack>
-#include <queue>
-using namespace std;
+#include <stdio.h>
 
-int k;
-int a;
-int bx;
-int by;
-int s = 1;
-int b[1000];
-int idx;
+int N;
+int arr[6 + 2][2 + 2];  // 주어지는 방향, 길이쌍
+int cnt[4]; // 방향 별 등장 횟수 저장
 
-pair<int, int> p[10000];
+int main(void) {
+    
+    int s = 1; // 작은 사각형의 넓이
+    int b = 1; // 큰 사각형의 넓이
 
-int main() {
-    cin >> k;
-    for (int i=1; i<=6; i++) {
-        cin >> a >> b[i];
-        if (i%2==0) {
-            bx += b[i];
-        }
-        else {
-            by += b[i];
-        }
-        for (int j=1; j<=6; j++) {
-            if (p[j].second == a) {
-                p[j] = {0, 0};
-                continue;
-            }
-        }
-        p[i] = {i, a};
+    // 입력 받기
+    scanf("%d", &N);
+    for (int i = 0; i < 6; i++) {
+        scanf("%d %d", &arr[i][0], &arr[i][1]);
+        cnt[arr[i][0]]++;
     }
-    for (int i=1; i<=6; i++) {
-        // pj 다 출력해보기
-        if (p[i].first != 0 && p[i].second != 0) {
-            idx = i;
+
+    for (int i = 0; i < 6; i++) {
+
+        if (cnt[arr[i][0]] == 1) {
+            // 한 번씩 등장하는 방향이다
+            b *= arr[i][1]; // 큰 사각형의 너비/높이이다
+            continue;
         }
+
+        int n = (i + 1) % 6;
+        int nn = (i + 2) % 6;
+        // 나(I)랑 다다음거(nn)랑 같으면 그 사이에 있는 것(n)이 작은 사각형의 너비/높이이다.
+        if (arr[i][0] == arr[nn][0]) s *= arr[n][1];
     }
-//    cout << b[(idx+2)%6] << " " << b[(idx+3)%6] << '\n';
-    int s = b[(idx+2)%6] * b[(idx+3)%6];
-    int bs = (bx/2) * (by/2);
-    cout << bs << " " << s;
-    s = bs - s;
-    cout << k * s;
+
+    printf("%d", (b - s) * N);
+
+    return 0;
 }
