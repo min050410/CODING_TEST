@@ -16,3 +16,5 @@ int main() {
     cin >> len;
     cout << bitCount(len);
 }
+
+
