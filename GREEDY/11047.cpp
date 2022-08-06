@@ -1,3 +1,5 @@
+// 동전 0
+
 #include <iostream>
 using namespace std;
 int arr[12];
