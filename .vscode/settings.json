@@ -3,6 +3,7 @@
         "*.ejs": "html",
         "*.mdx": "markdown",
         "iostream": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "vector": "cpp"
     }
 }
