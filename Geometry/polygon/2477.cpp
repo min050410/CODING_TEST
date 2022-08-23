@@ -1,5 +1,3 @@
-// 참외밭
-
 #include <iostream>
 #include <vector>
 #define ll long long
@@ -27,8 +25,11 @@ int main() {
     }
 
     for (int i=0; i<N; i++){
+        // 계단 모양 - 동서남북 판별
         if (arr[i].first == arr[i+2].first && arr[i+1].first == arr[i+3].first) {
+            // 작은 사각형
             small_s = arr[i+1].second * arr[i+2].second;
+            // 큰 사각형
             s = (arr[i].second + arr[i+2].second) * (arr[i+1].second + arr[i+3].second);
         }
     }
