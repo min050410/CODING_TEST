@@ -40,7 +40,7 @@ void topologi(){
 
 int main(){
 	cin >> n >> m;
-	for(int i=0; i<m; i++){
+	for (int i=0; i<m; i++){
 		cin >> a >> b;
 		v[a].push_back(b);	
 		inDegree[b]++;
@@ -51,7 +51,7 @@ int main(){
 	// cout << '\n';
 	topologi();
 
-	for(const auto &r: result){
+	for (const auto &r: result){
 		cout << r << " ";
 	}
 }
