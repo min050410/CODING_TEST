@@ -50,7 +50,6 @@ int main(){
 	// }
 	// cout << '\n';
 	topologi();
-
 	for (const auto &r: result){
 		cout << r << " ";
 	}
