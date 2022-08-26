@@ -5,7 +5,7 @@
 using namespace std;
 
 int n;
-int arr[100001];
+int arr[200001];
 int cnt;
 
 int main() {
@@ -14,12 +14,12 @@ int main() {
     cin >> n;
 
     // 에라토스테네스의 체
-    for (int i=1; i<10000; i++) {
+    for (int i=1; i<200001; i++) {
         arr[i] = 1;
     }
 
-    for (int i=2; i<10000; i++) {
-        for (int j=i*2; j<10000; j += i) {
+    for (int i=2; i<200001; i++) {
+        for (int j=i*2; j<200001; j += i) {
             arr[j] = 0;
         }
     }

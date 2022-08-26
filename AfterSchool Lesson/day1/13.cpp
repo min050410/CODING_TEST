@@ -1,3 +1,5 @@
+// TLE : 자연수의 길이는 최대 100이란걸 간과했다. string으로 입력받아 해결했다.
+
 #include <iostream>
 #include <algorithm>
 #include <queue>
@@ -6,7 +8,7 @@
 
 using namespace std;
 
-int n;
+string n;
 int cnt[10000];
 int zari;
 int max_int;
@@ -15,12 +17,10 @@ priority_queue<int> pq;
 
 int main() {
     cin >> n;
-    int temp = n;
-    while (temp) {
-        cnt[temp%10]++;
-        zari++;
-        temp = temp / 10;
-    }
+    for (int i=0; i<n.size(); i++) {
+				cnt[n[i] - '0']++;
+				zari++;
+		}
     for (int i=0; i<=9; i++) {
         if (max_int < cnt[i]) {
             max_int = cnt[i];
