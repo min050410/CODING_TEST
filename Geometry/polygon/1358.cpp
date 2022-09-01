@@ -1,34 +1,35 @@
 // 하키
 
-#include <algorithm>
 #include <iostream>
-#include <vector>
-
+#include <cmath>
 using namespace std;
-
-int calc_dist(int x, int y, int a, int b) {
-    return ((x - a) * (x - a)) + ((b - y) * (b - y));
-}
+int W, H, X, Y, P;
+int x, y;
+int cnt;
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-
-    int W, H, X, Y, P, cnt = 0;
     cin >> W >> H >> X >> Y >> P;
-
-    for (int t = 0; t < P; ++t) {
-        int x, y, r = (H / 2) * (H / 2);
+    for (int i=0; i<P; i++) {
         cin >> x >> y;
-    
-        if (X <= x && x <= X + W && Y <= y && y <= Y + H)
+        // 왼쪽 원
+        int r = H/2;
+        int a = X;
+        int b = Y+r;
+        if (pow(x-a,2) + pow(y-b, 2) <= pow(r, 2)) {
             cnt++;
-        else if (calc_dist(X, Y + (H / 2), x, y) <= r)
+            continue;
+        }
+        // 오른쪽 원
+        a = X+W;
+        b = Y+r;
+        if (pow(x-a,2) + pow(y-b, 2) <= pow(r, 2)) {
             cnt++;
-        else if (calc_dist(X + W, Y + (H / 2), x, y) <= r)  
+            continue;
+        }
+        // 직사각형
+        if (X <= x && x <= X+W && Y <= y && y <= Y+H) {
             cnt++;
+        }
     }
-    cout << cnt << "\n";
-    return 0;
+    cout << cnt;
 }
