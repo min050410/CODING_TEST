@@ -12,7 +12,7 @@ bool isPeaks(int y, int x) {
         int ty = y+my[i];
         int tx = x+mx[i];
         if (ty >= 0 && tx >= 0 && ty < n && tx < n) {
-            if (arr[ty][tx] > arr[y][x]) {
+            if (arr[ty][tx] >= arr[y][x]) {
                 flag = false;
                 break;
             }
